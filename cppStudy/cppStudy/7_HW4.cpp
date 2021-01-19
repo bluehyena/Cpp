@@ -17,7 +17,6 @@ int main()
 
 	while (floor <= N) 
 	{
-		// C++ 에는 파이썬처럼 "문자열" * 100 하는 법이 따로 없나요?
 		
 		for (int i = 0; i < N-floor; i++)
 		{

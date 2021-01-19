@@ -11,7 +11,7 @@ using namespace std;
 int main()
 {
 	int score;
-	// Q. C++은 "와 '의 차이가 뭔가요?
+
 	cout << "Enter your score: ";
 	cin >> score;
 
