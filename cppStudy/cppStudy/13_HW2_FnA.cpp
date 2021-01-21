@@ -35,7 +35,7 @@ int main()
         Pop(stack);
     }
     assert(stack[STACK_MAX_SIZE - 1] == (STACK_MAX_SIZE >> 1));
-    /*
+
     for (size_t i = 0; i < STACK_MAX_SIZE - 1; ++i)
     {
         size_t index = Find(stack, i);
@@ -51,7 +51,7 @@ int main()
 
         }
     }
-    */
+
     srand(time(NULL));
     for (size_t i = 0; i < (STACK_MAX_SIZE >> 1); ++i)
     {
@@ -91,7 +91,7 @@ void PushBack(int arr[], int element) {
     만약 스택이 이미 가득 차있는 상태라면 아무것도 추가하지 않는다.
     */
 
-    if (arr[255] > 254) {
+    if (arr[255] >= 255) {
         std::cout << "스택이 가득 차 있습니다." << std::endl;
     }
     else {
@@ -111,8 +111,8 @@ void Pop(int arr[]) {
 
     */
 
-    if (arr[255] == 0) {
-        std::cout << "스택이 비어 있습니다.";
+    if (arr[255] <= 0) {
+        std::cout << "스택이 비어 있습니다." << std::endl;
     }
     else {
         --arr[255];
@@ -128,39 +128,50 @@ size_t Find(int arr[], int element) {
 
     */
 
-    for (int index = 0; index < 255; ++index) {
-        
-        int findIndex = 0;
-        bool exist = false;
+    for (int index = 0; index < arr[255]; ++index) {
 
         if (arr[index] == element) {
-            findIndex = index;
-            exist = true;
-            break;
+            return index;
         }
-
-        else {
-            continue;
-        }
-
-        if (exist == false) {
-            return -1;
-        }
-        else {
-            return findIndex;
-        }
-
     }
-
+    
+    return -1;
 }
 
 void QuickSort(int arr[], int low, int high) {
+    if (low < high) {
 
+        int pivot = partition(arr, low, high);
+
+        QuickSort(arr, low, pivot - 1);
+        QuickSort(arr, pivot + 1, high);
+    } 
 }
 
 
 int partition(int arr[], int low, int high) {
+    
+    int pivot = high;
+    
+    int left = low - 1;
+    int right = low;
+    int tmp;
 
+    if (low < high) {
+       
+        while (right < high) {
+            
+            if (arr[right] < arr[pivot]) {
+                swap(arr[right], arr[left + 1]);
+                ++left;
+            }
+            ++right;
+        }
+        swap(arr[pivot], arr[left + 1]);
+    }
+    pivot = left + 1;
+
+    return pivot;
 }
 
 
