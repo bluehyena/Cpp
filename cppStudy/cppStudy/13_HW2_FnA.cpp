@@ -83,7 +83,8 @@ int main()
     return 0;
 }
 
-void PushBack(int arr[], int element) {
+void PushBack(int arr[], int element) 
+{
 
     /*
     스택은 후입, 즉 원소를 추가하게 되면 가장 맨 뒤에
@@ -91,16 +92,15 @@ void PushBack(int arr[], int element) {
     만약 스택이 이미 가득 차있는 상태라면 아무것도 추가하지 않는다.
     */
 
-    if (arr[255] >= 255) {
-        std::cout << "스택이 가득 차 있습니다." << std::endl;
-    }
-    else {
-        arr[arr[255]] = element;
-        ++arr[255];
+    if (arr[STACK_MAX_SIZE - 1] < STACK_MAX_SIZE - 1) 
+    {
+        arr[arr[STACK_MAX_SIZE - 1]] = element;
+        ++arr[STACK_MAX_SIZE - 1];
     }
 }
 
-void Pop(int arr[]) {
+void Pop(int arr[]) 
+{
 
     /*
     스택은 선출, 즉 원소를 추가하게 되면 가장 맨 뒤의 원소를 삭제한다
@@ -111,15 +111,14 @@ void Pop(int arr[]) {
 
     */
 
-    if (arr[255] <= 0) {
-        std::cout << "스택이 비어 있습니다." << std::endl;
-    }
-    else {
-        --arr[255];
+    if (arr[STACK_MAX_SIZE - 1] > 0) 
+    {
+        --arr[STACK_MAX_SIZE - 1];
     }
 }
 
-size_t Find(int arr[], int element) {
+size_t Find(int arr[], int element) 
+{
 
     /*
     스택 내에서 주어진 원소가 어느 index에 있는지 찾아내어 해당 index를 반환한다.
@@ -128,9 +127,11 @@ size_t Find(int arr[], int element) {
 
     */
 
-    for (int index = 0; index < arr[255]; ++index) {
+    for (int index = 0; index < arr[STACK_MAX_SIZE - 1]; ++index) 
+    {
 
-        if (arr[index] == element) {
+        if (arr[index] == element) 
+        {
             return index;
         }
     }
@@ -138,8 +139,10 @@ size_t Find(int arr[], int element) {
     return -1;
 }
 
-void QuickSort(int arr[], int low, int high) {
-    if (low < high) {
+void QuickSort(int arr[], int low, int high) 
+{
+    if (low < high) 
+    {
 
         int pivot = partition(arr, low, high);
 
@@ -149,19 +152,22 @@ void QuickSort(int arr[], int low, int high) {
 }
 
 
-int partition(int arr[], int low, int high) {
-    
+int partition(int arr[], int low, int high) 
+{   
     int pivot = high;
     
     int left = low - 1;
     int right = low;
     int tmp;
 
-    if (low < high) {
+    if (low < high) 
+    {
        
-        while (right < high) {
+        while (right < high) 
+        {
             
-            if (arr[right] < arr[pivot]) {
+            if (arr[right] < arr[pivot]) 
+            {
                 swap(arr[right], arr[left + 1]);
                 ++left;
             }
@@ -175,10 +181,11 @@ int partition(int arr[], int low, int high) {
 }
 
 
-void swap(int& a, int& b) {
-    int temp = a;
-    a = b;
-    b = temp;
+void swap(int& element1, int& element2) 
+{
+    int temp = element1;
+    element1 = element2;
+    element2 = temp;
 }
 
 /* Function Implementations */
