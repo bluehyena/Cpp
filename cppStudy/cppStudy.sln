@@ -7,8 +7,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppStudy", "cppStudy\cppStu
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "offTheRecord", "offTheRecord\offTheRecord.vcxproj", "{E5162544-9C81-4DBA-8000-202DAC4168DE}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BAEKJOON", "BAEKJOON\BAEKJOON.vcxproj", "{F84CFFC8-EB93-40DB-B812-386FB032098D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -33,14 +31,6 @@ Global
 		{E5162544-9C81-4DBA-8000-202DAC4168DE}.Release|x64.Build.0 = Release|x64
 		{E5162544-9C81-4DBA-8000-202DAC4168DE}.Release|x86.ActiveCfg = Release|Win32
 		{E5162544-9C81-4DBA-8000-202DAC4168DE}.Release|x86.Build.0 = Release|Win32
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Debug|x64.ActiveCfg = Debug|x64
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Debug|x64.Build.0 = Debug|x64
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Debug|x86.ActiveCfg = Debug|Win32
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Debug|x86.Build.0 = Debug|Win32
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Release|x64.ActiveCfg = Release|x64
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Release|x64.Build.0 = Release|x64
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Release|x86.ActiveCfg = Release|Win32
-		{F84CFFC8-EB93-40DB-B812-386FB032098D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
