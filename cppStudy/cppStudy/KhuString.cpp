@@ -1,56 +1,76 @@
-#pragma once
+ï»¿#pragma once
 
-#include <iostream>
+#include <cassert>
 #include "KhuString.h"
 
 /*
 Construct
-gStringÀº ÀÌÁ¦ str°ú °°Àº ¹®ÀÚ¿­ °ªÀ» °®´Â ¹®ÀÚ¿­ÀÌ´Ù
-Construct(¡°Hello¡±);	// gStringÀº ¡°Hello¡±
+gStringì€ ì´ì œ strê³¼ ê°™ì€ ë¬¸ìì—´ ê°’ì„ ê°–ëŠ” ë¬¸ìì—´ì´ë‹¤
+Construct(â€œHelloâ€);	// gStringì€ â€œHelloâ€
 
 GetLength
-gStringÀÇ ±æÀÌ¸¦ ¹İÈ¯ÇÑ´Ù
+gStringì˜ ê¸¸ì´ë¥¼ ë°˜í™˜í•œë‹¤
 GetLength();	// 5
 
 Append
-gString ¹®ÀÚ¿­ ¸Ç µÚ¿¡ strÀÇ ¹®ÀÚ¿­À» Ãß°¡ÇÑ´Ù
-Append(¡°, World!¡±);	// gStringÀº ¡°Hello, World!¡±
+gString ë¬¸ìì—´ ë§¨ ë’¤ì— strì˜ ë¬¸ìì—´ì„ ì¶”ê°€í•œë‹¤
+Append(â€œ, World!â€);	// gStringì€ â€œHello, World!â€
 
 RemoveAt
-i ¹øÂ° ¹®ÀÚ¸¦ Á¦°ÅÇÑ´Ù
-RemoveAt(0);	// gStringÀº ¡°ello, World!¡±
+i ë²ˆì§¸ ë¬¸ìë¥¼ ì œê±°í•œë‹¤
+RemoveAt(0);	// gStringì€ â€œello, World!â€
 
 Reverse
-¹®ÀÚ¿­À» ¹İÀüÇÑ´Ù
-Reverse();	// gStringÀº ¡°!dlroW ,olle¡±
+ë¬¸ìì—´ì„ ë°˜ì „í•œë‹¤
+Reverse();	// gStringì€ â€œ!dlroW ,olleâ€
 
 ToUpper
-¹®ÀÚ¿­ÀÇ ¾ËÆÄºªµéÀ» ÀüºÎ ´ë¹®ÀÚ·Î ¸¸µç´Ù
-ToUpper();	// gStringÀº ¡°!DLROW, OLLE¡±
+ë¬¸ìì—´ì˜ ì•ŒíŒŒë²³ë“¤ì„ ì „ë¶€ ëŒ€ë¬¸ìë¡œ ë§Œë“ ë‹¤
+ToUpper();	// gStringì€ â€œ!DLROW, OLLEâ€
 
 ToLower
-¹®ÀÚ¿­ÀÇ ¾ËÆÄºªµéÀ» ÀüºÎ ¼Ò¹®ÀÚ·Î ¸¸µç´Ù
-ToLower();	// gStringÀº !dlrow, olle¡±
+ë¬¸ìì—´ì˜ ì•ŒíŒŒë²³ë“¤ì„ ì „ë¶€ ì†Œë¬¸ìë¡œ ë§Œë“ ë‹¤
+ToLower();	// gStringì€ !dlrow, olleâ€
 
 Copy
-gString¿¡ strÀÇ ¹®ÀÚ¿­À» º¹»çÇØ³Ö´Â´Ù
-Copy(¡°Wow!¡±);	// gStringÀº ¡°Wow!¡±
+gStringì— strì˜ ë¬¸ìì—´ì„ ë³µì‚¬í•´ë„£ëŠ”ë‹¤
+Copy(â€œWow!â€);	// gStringì€ â€œWow!â€
 
 */
 
 /*
-1. ¹®ÀÚ¸¦ ¹Ù·Î Boolean Ã³¸®¿¡ »ç¿ëÇÏ¸é ¾ÈµÇÁÒ~ -------	 ÇØ°á
-2. Boolean¿¡´Â Á¦¹ß boolean¸¸ ------------------------   ÇØ°á
-3. Å¸ÀÔ ÅëÀÏ -----------------------------------------   ÇØ°á
-4. Áß°ıÈ£ ¾îµğ°¬¾î + ÄÚµù ½ºÅÄ´Ùµå ÁØ¼ö --------------   ÇØ°á
-5. ÇÑ ÁÙ¿¡ ¿©·¯ º¯¼ö ¼±¾ğÇÏÁö ¸¶¼¼¿ä -----------------   ÇØ°á
-6. Append¿¡ ¸Ş¸ğ¸® ´©¼ö ------------------------------	 ÇØ°á
-7. RemoveAt¿¡¼­´Â ¸Ş¸ğ¸® ÀçÇÒ´ç ÇÊ¿ä ¾øÀ½ ------------   ÇØ°á
-8. Reverse ¾Ë°í¸®µë ´Ù½Ã -----------------------------	 ÇØ°á
-9. ¿¬»êÀº °°Àº Å¸ÀÔ³¢¸® ------------------------------   ÇØ°á
-10. ANSI Ç¥ÁØÀÌ ¾Æ´Ï¸é ÀÌ°Å ¿¡·¯³² -------------------   ..¤Ğ
-12. Copy¿¡¼­ Áß¿äÇÑ Á¶°Ç ÇÏ³ª Ã¼Å© ¾ÈÇØÁÜ ------------	 ÇØ°á..?
-13. Copy ¸Ş¸ğ¸® ´©¼ö ---------------------------------	 ÇØ°á
+1. ë¬¸ìë¥¼ ë°”ë¡œ Boolean ì²˜ë¦¬ì— ì‚¬ìš©í•˜ë©´ ì•ˆë˜ì£ ~ -------	 í•´ê²°
+2. Booleanì—ëŠ” ì œë°œ booleanë§Œ ------------------------   í•´ê²°
+3. íƒ€ì… í†µì¼ -----------------------------------------   í•´ê²°
+4. ì¤‘ê´„í˜¸ ì–´ë””ê°”ì–´ + ì½”ë”© ìŠ¤íƒ ë‹¤ë“œ ì¤€ìˆ˜ --------------   í•´ê²°
+5. í•œ ì¤„ì— ì—¬ëŸ¬ ë³€ìˆ˜ ì„ ì–¸í•˜ì§€ ë§ˆì„¸ìš” -----------------   í•´ê²°
+6. Appendì— ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ ------------------------------	 í•´ê²°
+7. RemoveAtì—ì„œëŠ” ë©”ëª¨ë¦¬ ì¬í• ë‹¹ í•„ìš” ì—†ìŒ ------------   í•´ê²°
+8. Reverse ì•Œê³ ë¦¬ë“¬ ë‹¤ì‹œ -----------------------------	 í•´ê²°
+9. ì—°ì‚°ì€ ê°™ì€ íƒ€ì…ë¼ë¦¬ ------------------------------   í•´ê²°
+10. ANSI í‘œì¤€ì´ ì•„ë‹ˆë©´ ì´ê±° ì—ëŸ¬ë‚¨ -------------------   ..ã… 
+12. Copyì—ì„œ ì¤‘ìš”í•œ ì¡°ê±´ í•˜ë‚˜ ì²´í¬ ì•ˆí•´ì¤Œ ------------	 í•´ê²°..?
+13. Copy ë©”ëª¨ë¦¬ ëˆ„ìˆ˜ ---------------------------------	 í•´ê²°
+*/
+
+/*
+1. ë§¤ê°œë³€ìˆ˜ì— ëŒ€í•œ null ì²´í¬ ë¶€ì¬ ----------------------------------------- í•´ê²°
+2. forë¬¸ ë¹„ì–´ìˆì–´ë„ ì¤‘ê´„í˜¸ ------------------------------------------------	í•´ê²°					
+3. GetLengthê°€ ìˆëŠ”ë° êµ³ì´ ë”°ë¡œ gStringì˜ ê¸¸ì´ë¥¼ íŒŒì•…í•  í•„ìš”ê°€? ----------- í•´ê²°
+4. RemoveAt Boundary check ì œëŒ€ë¡œ ì•ˆë˜ì–´ìˆìŒ ------------------------------ í•´..ê²°? -> í•´ê²°!!
+5. Upper  / Lowerì„ í•˜ëŠ”ë° êµ³ì´ ë™ì í• ë‹¹? --------------------------------- í•´ê²°
+*/
+
+/*
+1. ëª¨ë˜ C++ì—ì„œ ë„ í¬ì¸í„°ëŠ” nullptrë¥¼ ì”ë‹ˆë‹¤ -------------------------------- ë„µ
+2. Unsignedì˜ ê°œë… ---------------------------------------------------------- 0 ì´ìƒ ì–‘ì˜ ì •ìˆ˜, 0 ~ 4,294,967,295
+3. ToUpper / ToLower ë‹¤ì‹œ --------------------------------------------------- ì´ê²Œë§ë‚˜..
+*/
+
+/*
+1. ì•ˆì“°ëŠ” includeë“¤ ì‚­ì œ -------------------------------------------- ì˜™
+2. iëŠ” ì™œ null ì²´í¬? ------------------------------------------------ ì—†ì•´ìŠµë‹ˆë‹¤
+3. ToUpper / ToLower ã…‹ã…‹ã…‹ â€˜aâ€™ â€“ â€˜Aâ€™ ì™œ ì•ˆì“°ëƒê³  --------------- ì•„..
 */
 
 namespace khu {
@@ -59,8 +79,12 @@ namespace khu {
 
 	const char* Construct(const char* str)
 	{
+		assert(str != nullptr);
 		unsigned int length = 0;
-		for (; str[length] != '\0'; ++length);
+		for (; str[length] != '\0'; ++length)
+		{
+		}
+
 		gString = new char[length + 1];
 
 		for (unsigned int i = 0; i < length; ++i)
@@ -76,37 +100,38 @@ namespace khu {
 	unsigned int GetLength()
 	{
 		unsigned int length = 0;
-		char* p_gstr = gString;
-		while (*p_gstr != '\0')
+		char* pGstr = gString;
+		while (*pGstr != '\0')
 		{
-			length++;
-			p_gstr++;
+			++length;
+			++pGstr;
 		}
 		return length;
 	}
 
 	void Append(const char* str)
 	{
-		unsigned int length = 0;
-		unsigned int new_length = 0;
-		char* appendedString = nullptr;
+		assert(str != nullptr);
+		unsigned int length = GetLength();
+		unsigned int newLength = 0;
 
-		for (; str[new_length]; ++new_length);
-		for (length = 0; gString[length] != '\0'; ++length);
+		for (; str[newLength] != '\0'; ++newLength)
+		{
+		}
 
-		appendedString = new char[new_length + length + 1];
+		char* appendedString = new char[newLength + length + 1];
 
 		for (unsigned int i = 0; i < length; ++i)
 		{
 			appendedString[i] = gString[i];
 		}
 
-		for (unsigned int i = 0; i < new_length; ++i)
+		for (unsigned int i = 0; i < newLength; ++i)
 		{
 			appendedString[i + length] = str[i];
 		}
 
-		appendedString[new_length + length] = '\0';
+		appendedString[newLength + length] = '\0';
 		delete[] gString;
 		gString = appendedString;
 
@@ -114,10 +139,9 @@ namespace khu {
 
 	bool RemoveAt(unsigned int i)
 	{
-		unsigned int length = 0;
-		for (; gString[length] != '\0'; ++length);
+		unsigned int length = GetLength();
 
-		if (length < i)
+		if (length - 1 < i)
 		{
 			return false;
 		}
@@ -133,8 +157,7 @@ namespace khu {
 
 	void Reverse()
 	{
-		unsigned int length = 0;
-		for (; gString[length] != '\0'; ++length);
+		unsigned int length = GetLength();;
 
 		for (int i = 0; (length - 1) / 2 >= i; ++i)
 		{	
@@ -146,64 +169,38 @@ namespace khu {
 
 	void ToUpper()
 	{
-		unsigned int length = 0;
-		char* upperString = nullptr;
-
-		for (; gString[length] != '\0'; ++length);
-		upperString = new char[length + 1];
+		unsigned int length = GetLength();;
 
 		for (int i = 0; i < length; ++i)
 		{
 			if (gString[i] >= 'a' && gString[i] <= 'z') 
 			{
-				upperString[i] = gString[i] - ' ';
-			}
-			else
-			{
-				upperString[i] = gString[i];
+				gString[i] = gString[i] - ('a' - 'A');
 			}
 		}
-		upperString[length] = '\0';
-		delete[] gString;
-		gString = upperString;
 	}
 
 	void ToLower()
 	{
-		unsigned int length = 0;
-		char* lowerString = nullptr;
-
-		for (; gString[length] != '\0'; ++length);
-		lowerString = new char[length + 1];
-
+		unsigned int length = GetLength();;
+		
 		for (int i = 0; i < length; ++i)
 		{
 			if (gString[i] >= 'A' && gString[i] <= 'Z')
 			{
-				lowerString[i] = gString[i] + ' ';
-			}
-			else
-			{
-				lowerString[i] = gString[i];
+				gString[i] = gString[i] + ('a' - 'A');
 			}
 		}
-		lowerString[length] = '\0';
-		delete[] gString;
-		gString = lowerString;
 	}
 
 	const char* Copy(const char* str)
 	{
-		if (str == gString)
+		assert(str != nullptr);
+		if (str != gString)
 		{
-			return gString;
-		}
-		else
-		{
-			unsigned int length = 0;
+			unsigned int length = GetLength();;
 			char* copiedString = nullptr;
 
-			for (; str[length] != '\0'; ++length);
 			copiedString = new char[length + 1];
 
 			for (int i = 0; i < length; ++i)

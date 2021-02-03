@@ -8,7 +8,7 @@ int main() {
 	khu::Append(", World!");
 	std::cout << "Append(World) 실행 후 gString : " << khu::gString << std::endl;
 	std::cout << "GetLength 실행결과 : " << khu::GetLength() << std::endl;
-	std::cout << "RemoveAt(1)의 실행결과 : " << khu::RemoveAt(1) << std::endl;
+	std::cout << "RemoveAt(1)의 실행결과 : " << khu::RemoveAt(12) << std::endl;
 	std::cout << "GetLength 실행결과 : " << khu::GetLength() << std::endl;
 	std::cout << "RemoveAt(1) 후 gString : " << khu::gString << std::endl;
 	std::cout << "RemoveAt 안되는값 실행결과 : " << khu::RemoveAt(1000) << std::endl;
