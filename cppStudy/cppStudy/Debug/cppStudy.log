@@ -1,2 +1,3 @@
-﻿  Main.cpp
-  cppStudy.vcxproj -> C:\Users\a\Documents\GitHub\Cpp\cppStudy\Debug\cppStudy.exe
+﻿  1699.cpp
+C:\Users\a\Documents\GitHub\Cpp\cppStudy\cppStudy\1699.cpp(12,23): error C2143: 구문 오류: ';'이(가) ')' 앞에 없습니다.
+C:\Users\a\Documents\GitHub\Cpp\cppStudy\cppStudy\1699.cpp(17,17): error C2059: 구문 오류: ';'
