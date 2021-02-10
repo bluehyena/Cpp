@@ -34,6 +34,7 @@ Game* InitializeGame(size_t playerCount)
 void DestroyGame(Game* game)
 {
 	/* implement */
+	delete game;
 }
 
 void RunGame(Game* game, std::ostream& os, std::istream& in)

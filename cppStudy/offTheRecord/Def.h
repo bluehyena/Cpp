@@ -4,6 +4,7 @@
 #include <iomanip>
 #include <iostream>
 
+// enum class : 중복 방지
 enum class ePlayerChoice
 {
 	NONE,
@@ -80,6 +81,7 @@ enum class eTileType
 	KOREA_OR_TRANSPORTATION,
 };
 
+//constexpr은 컴파일타임에 반드시 초기화 되어 있어야 함.
 constexpr size_t LAND_COUNT = 40;
 constexpr size_t MAX_PLAYER_COUNT = 4;
 constexpr size_t MAX_BUILDING_TYPE_COUNT = 3;
