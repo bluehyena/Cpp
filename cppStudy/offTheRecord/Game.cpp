@@ -11,6 +11,9 @@
 
 struct game_t
 {
+	std::ostream& os;
+	std::istream& in;
+	int turn; 
 	/* implement */
 };
 
@@ -25,7 +28,7 @@ Game* InitializeGame(size_t playerCount)
 {
 	Game* game = new Game();
 	std::srand(static_cast<unsigned int>(std::time(nullptr)));
-
+	initGame(game, game.os, game.in);
 	/* implement */
 
 	return game;
