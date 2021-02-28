@@ -79,7 +79,7 @@ int main()
         eResultType refundResult = user0.GetRefund();
         switch (refundResult)
         {
-        case eResultType::RefundSucess:
+        case eResultType::RefundSuccess: //
             std::cout << "You have successfully refunded." << std::endl;
             break;
         case eResultType::RefundFailedNoRefundAvailable:

@@ -10,7 +10,10 @@ Cart 클래스 구현
 현재 카트에 있는 아이템들이 데이터베이스에 존재하는지 판별하는 함수를 제작하라
 */
 
-class Cart {
+//friend class
+
+class Cart 
+{
 public:
 
 };

@@ -8,7 +8,10 @@ UserClient는 장바구니에 추가한 제품들을 구매할 수 있으나, 이전에 반드시 결제 수�
 UserClient는 가장 최근 구매한 장바구니 이력에 대해 환불이 가능하다
 */
 
-class UserClient : public IClient {
+class UserClient : public IClient 
+{
 public:
 
+private:
+	
 };

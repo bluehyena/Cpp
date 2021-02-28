@@ -8,7 +8,21 @@ ClientDatabase 클래스 구현
 생성 시의 초기 어드민 계정을 제외한 모든 유저는 ClientDatabase로만 생성/삭제될 수 있다.
 */
 
-class ClientDatabase {
+class ClientDatabase 
+{
 public:
+	ClientDatabase(AdminClient admin);
+	~ClientDatabase();
+private:
+	static int mNum;
 
 };
+
+int ClientDatabase::mNum = 0;
+
+ClientDatabase::ClientDatabase(AdminClient admin) 
+{
+	++mNum;
+}
+
+ClientDatabase::~ClientDatabase() {}

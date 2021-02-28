@@ -12,11 +12,17 @@ IClient는 관리자 계정과 일반 계정을 포괄하는 인터페이스(추상 클래스)이다.
 
 // 아이디, 패스워드
 
-class IClient {
-private:
-	std::string userId;
-	std::string userPassword;
+class IClient 
+{
 public:
-	IClient(std::string id, std::string password) : userId(id), userPassword(password) {}
-	virtual ~IClient() {} // 가상 소멸자
+	IClient();
+	virtual ~IClient() = 0;
+
+	virtual void AddItemToCart() = 0;
+	virtual void PurchaseItems() = 0;                                                
 };
+
+IClient::IClient() {}
+IClient::~IClient() {}
+
+
