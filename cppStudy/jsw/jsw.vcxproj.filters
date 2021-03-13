@@ -18,13 +18,10 @@
     <ClCompile Include="2841.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="1874.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="10845.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="..\finalassignment\plt_1.cpp">
+    <ClCompile Include="..\finalassignment\1874.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
